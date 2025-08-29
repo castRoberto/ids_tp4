@@ -31,6 +31,7 @@ SPDX-License-Identifier: MIT
 
 #include <stddef.h>
 #include <stdlib.h>
+#include <stdio.h>
 #include "gpio.h"
 
 /* === Macros definitions ====================================================================== */
@@ -107,20 +108,24 @@ gpio_t gpioCreate(uint8_t puerto, uint8_t bit) {
 void gpioSetOutput(gpio_t self, bool output) {
     if (self) {
         self->output = output;
-        HAL_GPIO_SET_OUTPUT(self->port, self->bit);
+        // HAL_GPIO_SET_OUTPUT(self->port, self->bit);
+        printf("GPIO: Configurado puerto %d, bit %d como %s\n", self->port, self->bit,
+               output ? "salida" : "entrada");
     }
 }
 
 void gpioSetState(gpio_t self, bool state) {
     if (self && self->output) {
-        HAL_GPIO_SET_STATE(self->port, self->bit, state);
+        // HAL_GPIO_SET_STATE(self->port, self->bit, state);
+        printf("GPIO: Puerto %d, bit %d seteado en %d\n", self->port, self->bit, state);
     }
 }
 
 bool gpioGetState(gpio_t self) {
     bool state = false;
     if (self) {
-        state = HAL_GPIO_GET_STATE(self->port, self->bit);
+        state = true; // HAL_GPIO_GET_STATE(self->port, self->bit);
+        printf("GPIO: Puerto %d, bit %d leido en %d\n", self->port, self->bit, state);
     }
     return state;
 }
