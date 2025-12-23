@@ -1,10 +1,6 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-// void gpioSetDirection(uint8_t puerto, uint8_t bit, bool salida);
-// void gpioSetOutput(uint8_t puerto, uint8_t bit, bool estado);
-// bool gpioGetInput(uint8_t puerto, uint8_t bit);
-
 /************************************************************************************************
 Copyright (c) 2023, Esteban Volentini <evolentini@herrera.unt.edu.ar>
 
